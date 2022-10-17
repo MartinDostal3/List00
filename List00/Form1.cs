@@ -40,7 +40,10 @@ namespace List00
 
             listBox1.Items.Clear();
             // *** cyklem foreach ***
-            
+            foreach(string s in seznamfilmu)
+            {
+                listBox1.Items.Add(s);
+            }
 
             // *** cyklem for - přes indexy ***
             
@@ -49,6 +52,11 @@ namespace List00
         private void button3_Click(object sender, EventArgs e)
         {
             //metoda Remove - odstraní první nalezený řetězec
+            string film = textBox1.Text;
+           if(!seznamfilmu.Remove(film))
+            {
+                MessageBox.Show("Zadaný film nenalezen");
+            }
             
 
         }
@@ -56,18 +64,31 @@ namespace List00
         private void button4_Click(object sender, EventArgs e)
         {
             //Clear
+
+            seznamfilmu.Clear();
            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             //RemoveAt()
+            int n = int.Parse(textBox2.Text);
+            seznamfilmu.RemoveAt(n);
             
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             //Contains
+            string prvek = textBox3.Text;
+            if(seznamfilmu.Contains(prvek))
+            {
+                MessageBox.Show("obsahuje");
+            }
+            else
+            {
+                MessageBox.Show("neobsahuje");
+            }
             
         }
 
