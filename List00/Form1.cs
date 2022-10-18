@@ -73,7 +73,9 @@ namespace List00
         {
             //RemoveAt()
             int n = int.Parse(textBox2.Text);
-            seznamfilmu.RemoveAt(n);
+            if (n< seznamfilmu.Count())
+                seznamfilmu.RemoveAt(n);
+            else MessageBox.Show("Zadany index neni");
             
         }
 
@@ -95,6 +97,16 @@ namespace List00
         private void button7_Click(object sender, EventArgs e)
         {
             //IndexOf
+            string nazev = textBox4.Text;
+            if(seznamfilmu.Contains(nazev))
+            {
+                MessageBox.Show("Index prvniho vyskytu filmu: " + seznamfilmu.IndexOf(nazev));
+            }
+            else
+            {
+                MessageBox.Show("Zadany film neni v seznamu");
+            }
+           
            
             //Pokud prvek v seznamu není, vrací metoda IndexOf() hodnotu -1
         }
@@ -102,26 +114,52 @@ namespace List00
         private void button8_Click(object sender, EventArgs e)
         {
             //LastIndexOf
-            
+
             //Pokud prvek není v List obsažen, vrátí index -1
+            string nazev = textBox5.Text;
+            if (seznamfilmu.Contains(nazev))
+            {
+                MessageBox.Show("index posledniho vyskytu filmu: " + seznamfilmu.LastIndexOf(nazev));
+            }
+            else
+            {
+                MessageBox.Show("Zadany film neni v seznamu");
+            }
+
+
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             //Distinct
             //Vrátí List s odlišnými prvky
+            seznamfilmu = seznamfilmu.Distinct().ToList();
             
+
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             //Insert
+            int index = int.Parse(textBox7.Text);
+            string film = textBox8.Text;
+            if(index < seznamfilmu.Count())
+            {
+                seznamfilmu.Insert(index, film);
+            }
+            else
+            {
+                MessageBox.Show("Mimo hranice listu");
+            }
+       
+
             
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             //Count
+            MessageBox.Show("Pocet filmů je: " + seznamfilmu.Count());
             
         }
 
@@ -129,18 +167,22 @@ namespace List00
         {
             //index píšene stejně jako u pole v hranatých závorkách
             //1. prvek má index 0
-            
+            int index = int.Parse(textBox9.Text);
+            // MessageBox.Show(seznamfilmu.ElementAt(index));
+            MessageBox.Show(seznamfilmu[index]);
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             //Sort
+           seznamfilmu.Sort();
             
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             //Reverse
+            seznamfilmu.Reverse();
             
         }
 
