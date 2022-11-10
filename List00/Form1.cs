@@ -29,8 +29,12 @@ namespace List00
             //Metoda Add
             //(Jako řetězec zadejte název filmu)
             seznamfilmu.Add("aa");
+            seznamfilmu.Add("xxx");
             seznamfilmu.Add("bbaa");
             seznamfilmu.Add("ccaa");
+            seznamfilmu.Add("ccaaaaaaloi");
+
+            seznamfilmu.Add("Pirati z karibiku");
 
         }
 
@@ -204,5 +208,35 @@ namespace List00
             seznamfilmu.CopyTo(poleFilmu);
             foreach (string film in poleFilmu) MessageBox.Show(film);
         }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            string film = seznamfilmu.Find(a => a.Length > 10);
+            MessageBox.Show(film);
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+          
+            List<string> vyber = seznamfilmu.FindAll(a => a.Length > 10);
+            listBox2.Items.Clear();
+            // *** cyklem foreach ***
+            foreach (string s in vyber)
+            {
+                listBox2.Items.Add(s);
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            seznamfilmu.RemoveAll(a => a.Contains("xxx"));
+            listBox2.Items.Clear();
+            foreach (string s in seznamfilmu)
+            {
+                listBox2.Items.Add(s);
+            }
+        }
+
     }
 }
+
